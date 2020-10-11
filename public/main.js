@@ -38,8 +38,8 @@ document.addEventListener('keyup', (evt) => {
 function initializePeer(){
     console.log('test')
     const peer = new Peer(undefined, {
-        host: 'localhost',
-        port: 3001
+        host: '/',
+        path: '/'
     });
     
     peer.on('open', id => {
