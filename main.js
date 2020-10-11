@@ -1,13 +1,8 @@
 const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
-// const https = require('https');
 const io = require('socket.io')(http);
 const path = require('path');
-
-// var privateKey  = fs.readFileSync('selfsigned.key', 'utf8');
-// var certificate = fs.readFileSync('selfsigned.crt', 'utf8');
-// var credentials = {key: privateKey, cert: certificate};
 
 app.use(express.static(__dirname + "/public"));
 app.use('/build/', express.static(path.join(__dirname, 'node_modules/three/build')));

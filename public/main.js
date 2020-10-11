@@ -36,8 +36,9 @@ document.addEventListener('keyup', (evt) => {
 
 //Initializes the Peer ID, and connects the user to a room
 function initializePeer(){
+    console.log('test')
     const peer = new Peer(undefined, {
-        host: '/',
+        host: 'localhost',
         port: 3001
     });
     
