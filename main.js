@@ -4,6 +4,7 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const path = require('path');
 
+
 app.use(express.static(__dirname + "/public"));
 app.use('/build/', express.static(path.join(__dirname, 'node_modules/three/build')));
 app.use('/jsm/', express.static(path.join(__dirname, 'node_modules/three/examples/jsm')));
@@ -41,7 +42,7 @@ setInterval(() => {
     })
 },1000/serverTickRate)
 
-const port = process.env.port || 3003;
+const port = process.env.PORT || 80;
 http.listen(port, (err) => {
     if (err) return console.log(err);
     console.log(`Listening on port ${port}`);

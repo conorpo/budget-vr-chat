@@ -38,7 +38,7 @@ document.addEventListener('keyup', (evt) => {
 function initializePeer(){
     const peer = new Peer(undefined, {
         host: '/',
-        port: 3004
+        port: 3001
     });
     
     peer.on('open', id => {
