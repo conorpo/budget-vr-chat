@@ -23,10 +23,14 @@ const heldKeys = {
 
 let myUserId = "";
 
+const myVideo = document.getElementById('myCam');
 document.addEventListener('keydown', (evt) => {
     if(evt.key=='w'||evt.key=='a'||evt.key=='s'||evt.key=='d'){
         heldKeys[evt.key] = 1;
     };
+    if(evt.key=='c'){
+        //Toggle camera
+    }
 })
 document.addEventListener('keyup', (evt) => {
     if(evt.key=='w'||evt.key=='a'||evt.key=='s'||evt.key=='d'){
@@ -36,9 +40,9 @@ document.addEventListener('keyup', (evt) => {
 
 //Initializes the Peer ID, and connects the user to a room
 function initializePeer(){
-    console.log('test')
     const peer = new Peer(undefined, {
         host: '/',
+        //port: 3001,
         path: '/'
     });
     
@@ -52,17 +56,19 @@ function initializePeer(){
 
 const peers = {};
 
-//Handles person video feed, also handles sending video feed to new user
-
-const myVideo = document.createElement('video');
-myVideo.muted = true;
 
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
 }).then(stream => {
-    //addVideoStream(myVideo, stream, false);
-
+    
+    myVideo.srcObject = stream;
+    myVideo.addEventListener('loadedmetadata', () => {
+        myVideo.play();
+        myVideo.muted = true;
+        //addPlayer(video,userId);
+    })
+    
     const peer = initializePeer()
 
     //Handles receiving calls
